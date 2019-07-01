@@ -6,6 +6,7 @@ import javax.swing.*;
  * Created by AtagaN on 29.12.2017.
  */
 public class Main {
+
     public static void main(String[] args) {
         Model model = new Model();
         Controller controller = new Controller(model);
@@ -16,7 +17,6 @@ public class Main {
         game.setResizable(false);
 
         game.add(controller.getView());
-
 
         game.setLocationRelativeTo(null);
         game.setVisible(true);

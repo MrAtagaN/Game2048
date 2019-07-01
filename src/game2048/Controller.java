@@ -16,11 +16,11 @@ public class Controller extends KeyAdapter {
         this.view = new View(this);
     }
 
-    public Tile[][] getGameTiles(){
+    public Tile[][] getGameTiles() {
         return model.getGameTiles();
     }
 
-    public int getScore(){
+    public int getScore() {
         return model.score;
     }
 
@@ -29,46 +29,45 @@ public class Controller extends KeyAdapter {
     }
 
 
-
-    public void resetGame(){
+    public void resetGame() {
         model.score = 0;
-        view.isGameLost =false;
+        view.isGameLost = false;
         view.isGameWon = false;
         model.resetGameTiles();
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             resetGame();
         }
-        if(e.getKeyCode() == KeyEvent.VK_Z){
+        if (e.getKeyCode() == KeyEvent.VK_Z) {
             model.rollback();
         }
-        if(e.getKeyCode() == KeyEvent.VK_A){
+        if (e.getKeyCode() == KeyEvent.VK_A) {
             model.autoMove();
         }
 
-        if(e.getKeyCode() == KeyEvent.VK_R){
+        if (e.getKeyCode() == KeyEvent.VK_R) {
             model.randomMove();
         }
-        if(!model.canMove()){
-            view.isGameLost=true;
+        if (!model.canMove()) {
+            view.isGameLost = true;
         }
-        if(!view.isGameLost && !view.isGameWon){
-            if(e.getKeyCode() == KeyEvent.VK_LEFT){
+        if (!view.isGameLost && !view.isGameWon) {
+            if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                 model.left();
             }
-            if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                 model.right();
             }
-            if(e.getKeyCode() == KeyEvent.VK_DOWN){
+            if (e.getKeyCode() == KeyEvent.VK_DOWN) {
                 model.down();
             }
-            if(e.getKeyCode() == KeyEvent.VK_UP){
+            if (e.getKeyCode() == KeyEvent.VK_UP) {
                 model.up();
             }
-            if (model.maxTile == WINNING_TILE){
+            if (model.maxTile == WINNING_TILE) {
                 view.isGameWon = true;
             }
         }
